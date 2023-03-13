@@ -14,11 +14,11 @@ namespace PRS_Practice1.Models {
         [StringLength(30)]
         public string? RejectionReason { get; set; }
         [StringLength(20)]
-        public string DeliveryMode { get; set; } = string.Empty;
+        public string DeliveryMode { get; set; } = "Pickup";
         [StringLength(10)]
-        public string Status { get; set; } = string.Empty; // private ????
-        [Column(TypeName = "decimal,(11,2)")]
-        public string Total { get; set; } // private ????
+        public string Status { get; set; } = "NEW"; // private ????
+        [Column(TypeName = "decimal(11,2)")]
+        public decimal Total { get; set; } = 0; // private ????
 
         // PK's and Virtual Properties
         public int UserId { get; set; }

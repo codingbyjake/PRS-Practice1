@@ -10,8 +10,8 @@ namespace PRS_Practice1.Models {
         public string PartNbr { get; set; } = string.Empty;
         [StringLength(30)]
         public string Name { get; set; } = string.Empty;
-        [Column(TypeName = "decimal,(11,2)")]
-        public string Price { get; set; }       //How to deal with green squigs ???
+        [Column(TypeName = "decimal(11,2)")]
+        public decimal Price { get; set; }       //How to deal with green squigs ???
         [StringLength(30)]
         public string Unit { get; set; } = string.Empty;
         [StringLength(255)]

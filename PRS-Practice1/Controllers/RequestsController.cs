@@ -72,6 +72,23 @@ namespace PRS_Practice1.Controllers
             return NoContent();
         }
 
+        // ************* Handmade Login method *************
+        // PUT: api/Requests/Review/5
+        [HttpPut("Review/{id}")]
+        public async Task<IActionResult> Review(int id, Request request) {
+
+            if (request.Total <= 50) {
+                request.Status = "APPROVED";
+            }
+            else {
+                request.Status = "REVIEW";
+            }
+            return await PutRequest(id, request);
+
+
+
+        }
+
         // POST: api/Requests
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
