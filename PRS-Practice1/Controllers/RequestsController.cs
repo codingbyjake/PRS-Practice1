@@ -41,6 +41,20 @@ namespace PRS_Practice1.Controllers
             return request;
         }
 
+        // ************* Handmade GetReviews method *************
+        //Gets requests in "REVIEW" status and not owned by the user with the primary key of id.
+        // GET: api/Requests/Reviews/5
+        [HttpGet("Reviews/{id}")]
+        public async Task<ActionResult<IEnumerable<Request>>> GetReviews(int id) {
+        // public async Task<ActionResult<List<Request>>> GetReviews(int id) {
+            List<Request> requests = await _context.Requests.Where(x => (x.Status == "REVIEW") && (x.Id != id)).ToListAsync();
+            if (requests == null) {
+                return NotFound();
+            }
+            return requests;
+        }
+
+
         // PUT: api/Requests/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -72,11 +86,10 @@ namespace PRS_Practice1.Controllers
             return NoContent();
         }
 
-        // ************* Handmade Login method *************
+        // ************* Handmade Review method *************
         // PUT: api/Requests/Review/5
         [HttpPut("Review/{id}")]
         public async Task<IActionResult> Review(int id, Request request) {
-
             if (request.Total <= 50) {
                 request.Status = "APPROVED";
             }
@@ -84,10 +97,24 @@ namespace PRS_Practice1.Controllers
                 request.Status = "REVIEW";
             }
             return await PutRequest(id, request);
-
-
-
         }
+
+        // ************* Handmade Approve method *************
+        // PUT: api/Requests/Approve/5
+        [HttpPut("Approve/{id}")]
+        public async Task<IActionResult> Approve(int id, Request request) {
+            request.Status = "APPROVED";      
+            return await PutRequest(id, request);
+        }
+
+        // ************* Handmade Reject method *************
+        // PUT: api/Requests/Reject/5
+        [HttpPut("Reject/{id}")]
+        public async Task<IActionResult> Reject(int id, Request request) {
+            request.Status = "REJECTED";
+            return await PutRequest(id, request);
+        }
+
 
         // POST: api/Requests
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
