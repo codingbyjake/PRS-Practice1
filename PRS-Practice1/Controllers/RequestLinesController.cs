@@ -125,9 +125,9 @@ namespace PRS_Practice1.Controllers
 
             decimal grandTotal = 0;
             foreach(var rl in requestLines) {
-               grandTotal =+ rl.Quantity * rl.Product.Price;
+               grandTotal = grandTotal + (rl.Quantity * rl.Product.Price);
             }
-
+            request.Total = grandTotal;
             var changes = request.Total = await _context.SaveChangesAsync();
             if (changes != 1) {
                 throw new Exception("Recalculate failed!!");
