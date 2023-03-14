@@ -58,6 +58,7 @@ namespace PRS_Practice1.Controllers
             try
             {
                 await _context.SaveChangesAsync();
+                await RecalculateRequestTotal(requestLine.RequestId);      //************Handmade Call to RecalculateRequestTotal Method************
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -81,6 +82,7 @@ namespace PRS_Practice1.Controllers
         {
             _context.RequestLines.Add(requestLine);
             await _context.SaveChangesAsync();
+            await RecalculateRequestTotal(requestLine.RequestId);      //************Handmade Call to RecalculateRequestTotal Method************
 
             return CreatedAtAction("GetRequestLine", new { id = requestLine.Id }, requestLine);
         }
@@ -97,6 +99,7 @@ namespace PRS_Practice1.Controllers
 
             _context.RequestLines.Remove(requestLine);
             await _context.SaveChangesAsync();
+            await RecalculateRequestTotal(requestLine.RequestId);      //************Handmade Call to RecalculateRequestTotal Method************
 
             return NoContent();
         }
