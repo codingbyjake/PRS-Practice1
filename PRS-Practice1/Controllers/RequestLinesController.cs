@@ -12,7 +12,8 @@ namespace PRS_Practice1.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class RequestLinesController : ControllerBase
-    {
+    {// Start of Class
+
         private readonly PRSPrac1DbContext _context;
 
         public RequestLinesController(PRSPrac1DbContext context)
@@ -103,5 +104,10 @@ namespace PRS_Practice1.Controllers
         {
             return _context.RequestLines.Any(e => e.Id == id);
         }
-    }
+
+     //private async Task<IActionResult>> RecalculateRequestTotal(int RequestId) {
+     //       var request = await _context.Requests.Where(requestLine.RequestId == Request.Id);
+     //   }
+
+    }// End of class
 }

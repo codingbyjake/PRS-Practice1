@@ -59,7 +59,7 @@ namespace PRS_Practice1.Migrations
                     RejectionReason = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     DeliveryMode = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Status = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    Total = table.Column<string>(type: "decimal,(11,2)", nullable: false),
+                    Total = table.Column<decimal>(type: "decimal(11,2)", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -81,7 +81,7 @@ namespace PRS_Practice1.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PartNbr = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    Price = table.Column<string>(type: "decimal,(11,2)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(11,2)", nullable: false),
                     Unit = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     PhotoPath = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     VendorId = table.Column<int>(type: "int", nullable: false)

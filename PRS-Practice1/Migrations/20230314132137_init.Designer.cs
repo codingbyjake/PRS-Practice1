@@ -11,8 +11,8 @@ using PRS_Practice1.Models;
 namespace PRS_Practice1.Migrations
 {
     [DbContext(typeof(PRSPrac1DbContext))]
-    [Migration("20230313182404_fixedDecimalAndDefaultProps")]
-    partial class fixedDecimalAndDefaultProps
+    [Migration("20230314132137_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
