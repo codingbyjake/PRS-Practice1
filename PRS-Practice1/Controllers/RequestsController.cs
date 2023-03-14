@@ -47,7 +47,7 @@ namespace PRS_Practice1.Controllers
         [HttpGet("Reviews/{id}")]
         public async Task<ActionResult<IEnumerable<Request>>> GetReviews(int id) {
         // public async Task<ActionResult<List<Request>>> GetReviews(int id) {
-            List<Request> requests = await _context.Requests.Where(x => (x.Status == "REVIEW") && (x.Id != id)).ToListAsync();
+            List<Request> requests = await _context.Requests.Where(x => (x.Status == "REVIEW") && (x.UserId != id)).ToListAsync();
             if (requests == null) {
                 return NotFound();
             }
