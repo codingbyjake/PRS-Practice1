@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Packaging.Signing;
 using PRS_Practice1.Models;
 
 namespace PRS_Practice1.Controllers
@@ -105,9 +106,32 @@ namespace PRS_Practice1.Controllers
             return _context.RequestLines.Any(e => e.Id == id);
         }
 
-     //private async Task<IActionResult>> RecalculateRequestTotal(int RequestId) {
-     //       var request = await _context.Requests.Where(requestLine.RequestId == Request.Id);
-     //   }
+
+        // ************* Handmade RecalculateRequestTotal method *************
+        // ************* LINQ Method Syntax version *************
+        private async Task<IActionResult> RecalculateRequestTotal(int RequestId) {
+            var request = await _context.Requests.FindAsync(RequestId);
+            if (request is null) {
+                return NotFound();
+            }
+
+            var requestLines = await _context.RequestLines
+                .Include(rl => rl.Product )
+                .Where(rl => rl.RequestId == request.Id)
+                .ToListAsync();
+
+            decimal grandTotal = 0;
+            foreach(var rl in requestLines) {
+               grandTotal =+ rl.Quantity * rl.Product.Price;
+            }
+
+            var changes = request.Total = await _context.SaveChangesAsync();
+            if (changes != 1) {
+                throw new Exception("Recalculate failed!!");
+            }
+
+            return Ok();
+        }
 
     }// End of class
 }
