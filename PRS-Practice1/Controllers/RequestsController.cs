@@ -24,14 +24,24 @@ namespace PRS_Practice1.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Request>>> GetRequests()
         {
-            return await _context.Requests.ToListAsync();
+            // return await _context.Requests.ToListAsync();  // <<<<<<<<<<<< ORIGINAL
+            var request = await _context.Requests
+                                            .Include(x => x.User)
+                                            .Include(x => x.RequestLines)
+                                            .ToListAsync();
+            return request;
+
         }
 
         // GET: api/Requests/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Request>> GetRequest(int id)
         {
-            var request = await _context.Requests.FindAsync(id);
+            //var request = await _context.Requests.FindAsync(id);  // <<<<<<<<<<<< ORIGINAL
+            var request = await _context.Requests
+                                            .Include(x => x.User)
+                                            .Include(x => x.RequestLines)
+                                            .SingleOrDefaultAsync(x => x.Id == id);
 
             if (request == null)
             {
@@ -46,8 +56,15 @@ namespace PRS_Practice1.Controllers
         // GET: api/Requests/Reviews/5
         [HttpGet("Reviews/{id}")]
         public async Task<ActionResult<IEnumerable<Request>>> GetReviews(int id) {
-        // public async Task<ActionResult<List<Request>>> GetReviews(int id) {
-            List<Request> requests = await _context.Requests.Where(x => (x.Status == "REVIEW") && (x.UserId != id)).ToListAsync();
+            //List<Request> requests = await _context.Requests
+            //                                            .Where(x => (x.Status == "REVIEW") && (x.UserId != id))
+            //                                            .ToListAsync();    // <<<<<<<<<<<<<<<<<<< ORIGINAL
+
+            List<Request> requests = await _context.Requests
+                                                .Include(x => x.User)
+                                                .Include(x => x.RequestLines)
+                                                .Where(x => (x.Status == "REVIEW") && (x.UserId != id))
+                                                .ToListAsync();
             if (requests == null) {
                 return NotFound();
             }
