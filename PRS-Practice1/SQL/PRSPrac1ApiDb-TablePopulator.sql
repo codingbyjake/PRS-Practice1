@@ -33,12 +33,12 @@ VALUES('R-B001', 'Nickel-Cadmium Battery', '500.00', 'Electic Battery', NULL, 1)
 
 INSERT Requests (Description, Justification, RejectionReason, DeliveryMode, Status, Total, UserId)
 VALUES
-('Air food power', 'Required for Soyuz MS21 mission', 'none', 'Delivery', 'NEW', 620, 2),
-('Treadmill of ISS', 'Exercise required aboard ISS', 'none', 'Delivery' , 'NEW', 700, 3),
-('More food for ISS', 'Food supply is running low', 'none', 'Delivery' , 'NEW', 50, 2),
-('Camera and Zero-G indicator', 'No pictures it didn''t happen and need to know when in space', 'none', 'Pickup' , 'NEW', 21, 4),
-('Cameras for ground support', 'No pictures it didn''t happen', 'none', 'Pickup' , 'NEW', 200, 1),
-('Battery for NS20 flight', 'Need to power video iPhone', 'none', 'Pickup' , 'NEW', 500, 9);
+('Air food power', 'Required for Soyuz MS21 mission', NULL , 'Delivery', 'NEW', 620, 2),
+('Treadmill of ISS', 'Exercise required aboard ISS', NULL, 'Delivery' , 'NEW', 700, 3),
+('More food for ISS', 'Food supply is running low', NULL, 'Delivery' , 'NEW', 50, 2),
+('Camera and Zero-G indicator', 'No pictures it didn''t happen and need to know when in space', NULL, 'Pickup' , 'NEW', 21, 4),
+('Cameras for ground support', 'No pictures it didn''t happen', NULL, 'Pickup' , 'NEW', 200, 1),
+('Battery for NS20 flight', 'Need to power video iPhone', NULL , 'Pickup' , 'NEW', 500, 9);
 --SELECT * FROM Requests;
 
 INSERT RequestLines (Quantity, RequestId, ProductId)
