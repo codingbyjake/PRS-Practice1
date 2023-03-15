@@ -41,6 +41,8 @@ namespace PRS_Practice1.Controllers
             var request = await _context.Requests
                                             .Include(x => x.User)
                                             .Include(x => x.RequestLines)
+                                                  .ThenInclude(y => y.Product)
+                                                  .ThenInclude(z => z.Vendor)
                                             .SingleOrDefaultAsync(x => x.Id == id);
 
             if (request == null)
