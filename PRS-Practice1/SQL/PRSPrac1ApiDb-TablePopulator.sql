@@ -1,6 +1,6 @@
 USE PRSPrac1ApiDb;
 
-INSERT INTO Users(Username, Password, Fristname, Lastname, Phone, Email, IsReviewer, IsAdmin)
+INSERT INTO Users(Username, Password, Firstname, Lastname, Phone, Email, IsReviewer, IsAdmin)
 VALUES('JWitte', 'password', 'Jake', 'Witte', '1-451-7777', 'jw@spaceadmin.com', 'true', 'true'),
 ('DMatveev', 'password', 'Denis', 'Matveev', '7-111-1111', 'dm@SoyuzMS-21.com', 'false', 'false'),
 ('SKorsakov', 'password', 'Sergey', 'Korsakov', '7-211-1111', 'sk@SoyuzMS-21.com', 'false', 'false'),

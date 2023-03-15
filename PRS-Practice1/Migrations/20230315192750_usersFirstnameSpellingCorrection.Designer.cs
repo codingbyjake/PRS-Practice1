@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PRS_Practice1.Models;
 
@@ -10,9 +11,10 @@ using PRS_Practice1.Models;
 namespace PRS_Practice1.Migrations
 {
     [DbContext(typeof(PRSPrac1DbContext))]
-    partial class PRSPrac1DbContextModelSnapshot : ModelSnapshot
+    [Migration("20230315192750_usersFirstnameSpellingCorrection")]
+    partial class usersFirstnameSpellingCorrection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

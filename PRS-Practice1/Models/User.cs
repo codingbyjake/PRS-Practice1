@@ -11,7 +11,7 @@ namespace PRS_Practice1.Models {
         [StringLength(30)]
         public string Password { get; set; } = string.Empty;
         [StringLength(30)]
-        public string Fristname { get; set; } = string.Empty;
+        public string Firstname { get; set; } = string.Empty;
         [StringLength(30)]
         public string Lastname { get; set; } = string.Empty;
         [StringLength(12)]
