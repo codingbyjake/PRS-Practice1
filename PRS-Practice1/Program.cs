@@ -24,5 +24,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-//test push
