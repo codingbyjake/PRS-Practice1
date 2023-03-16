@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.Xml;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -47,6 +48,7 @@ namespace PRS_Practice1.Controllers
         [HttpGet("po/{vendorId}")]
         public async Task<ActionResult<Po>> CreatePo(int vendorId) { // Start of Method
             var po = new Po();
+
             po.Vendor = await _context.Vendors.FindAsync(vendorId);
 
             var resultlines = from v in _context.Vendors
@@ -84,7 +86,7 @@ namespace PRS_Practice1.Controllers
             }
 
             po.Polines = sortedLines.Values;
-            po.PoTotal= sortedLines.Sum(x => x.Value.LineTotal);
+            po.PoTotal= sortedLines.Sum(x => x.Value.LineTotal * x.Value.Quantity);
 
             return po;
 
