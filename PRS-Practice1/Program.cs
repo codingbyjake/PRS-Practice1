@@ -6,8 +6,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+var connStringKey = "PrsDbContextWinhost";
+
+#if DEBUG
+connStringKey = "PRSPrac1DbContext";
+#endif
+
 builder.Services.AddDbContext<PRSPrac1DbContext>(x => {
-    x.UseSqlServer(builder.Configuration.GetConnectionString("PRSPrac1DbContext"));
+    x.UseSqlServer(builder.Configuration.GetConnectionString(connStringKey), x => x.EnableRetryOnFailure());
 });
 builder.Services.AddCors();
 
