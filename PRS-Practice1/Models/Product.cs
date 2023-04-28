@@ -19,7 +19,7 @@ namespace PRS_Practice1.Models {
 
         // FK's and Virtual Properties
         public int VendorId { get; set; }
-        public virtual Vendor Vendor { get; set; } = null!;
+        public virtual Vendor? Vendor { get; set; } = null;
 
     }
 }
