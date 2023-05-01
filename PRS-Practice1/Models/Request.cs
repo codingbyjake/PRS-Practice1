@@ -22,7 +22,8 @@ namespace PRS_Practice1.Models {
 
         // PK's and Virtual Properties
         public int UserId { get; set; }
-        public virtual User User { get; set; } = null!;
-        public virtual ICollection<RequestLine> RequestLines { get; set; } = null!;
+        public virtual User? User { get; set; } = null;
+        public virtual ICollection<RequestLine>? RequestLines { get; set; } = null;
+       // public virtual ICollection<RequestLine?> RequestLines { get; set; } = null;
     }
 }

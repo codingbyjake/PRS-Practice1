@@ -12,6 +12,6 @@ namespace PRS_Practice1.Models {
         public virtual Request? Request { get; set; }
 
         public int ProductId { get; set; }
-        public virtual Product Product { get; set; } = null!;
+        public virtual Product? Product { get; set; } = null;
     }
 }
