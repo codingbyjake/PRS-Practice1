@@ -62,6 +62,7 @@ namespace PRS_Practice1.Controllers
 
             List<Request> requests = await _context.Requests
                                                 .Where(x => (x.Status == "REVIEW") && (x.UserId != id))
+                                                .Include(x => x.User)  // JUST ADDED
                                                 .ToListAsync();
             if (requests == null) {
                 return NotFound();
